@@ -106,7 +106,8 @@ timestampedNode('SLAVE') {
             '''
         }
 
-    if (isOnReleaseBranch()) {
+// FIXME: TEMP: uncomment before merge!
+//    if (isOnReleaseBranch()) {
 		stage 'Integration Testing'
 			executeAndReport('build/integration/output/*.xml') {
 				sh '''phpenv local 7.0
@@ -140,7 +141,7 @@ timestampedNode('SLAVE') {
 				cd build/integration && OC_TEST_ENCRYPTION_ENABLED=1 OC_TEST_ALT_HOME=1 ./run.sh
 			   '''
 			}
-     }
+//     }
 }
 
 def isOnReleaseBranch ()  {
